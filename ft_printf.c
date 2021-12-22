@@ -6,7 +6,7 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:34:58 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/22 01:07:27 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/22 01:35:04 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	ft_printf(const char *input, ...)
 	return (0);
 }
 
+/*
+#include <stdio.h>
 int	main(void)
 {
 	void		*ptr;
@@ -85,4 +87,4 @@ int	main(void)
 	ft_printf("p|%p|\n", &ptr);
 	printf("p|%p|\n", &ptr);
 	return (0);
-}
+}*/

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   putlib.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/22 01:26:03 by bdion             #+#    #+#             */
+/*   Updated: 2021/12/22 01:33:19 by bdion            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "printf.h"
 
 void	ft_putnbr(int n)
 {
-	char	pchr;
+	size_t	pchr;
 
 	if (n == -2147483648)
 		write(1, "-2147483648", 11);
@@ -28,7 +40,7 @@ void	ft_putnbr(int n)
 	}
 }
 
-void	ft_puthex(unsigned long long hex, char type)
+void	ft_puthex(unsigned long long hex, size_t type)
 {
 	if (hex < 16)
 	{
@@ -51,7 +63,7 @@ void	ft_puthex(unsigned long long hex, char type)
 
 void	ft_putstr(char *s)
 {
-	int	i;
+	size_t	i;
 
 	i = -1;
 	if (s)
@@ -68,7 +80,7 @@ void	ft_putaddr(void *ptr)
 	ft_puthex(ptraddr, 'x');
 }
 
-void	ft_putchr(char c)
+void	ft_putchr(size_t c)
 {
 	write(1, &c, 1);
 }
