@@ -37,3 +37,8 @@ void	ft_putstr(char *s)
 		while (s[++i] != 0)
 			write(1, &s[i], 1);
 }
+
+void	ft_putchr(char c)
+{
+	write(1, &c, 1);
+}
