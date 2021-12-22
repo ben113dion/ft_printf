@@ -28,6 +28,27 @@ void	ft_putnbr(int n)
 	}
 }
 
+void	ft_puthex(unsigned long long hex, char type)
+{
+	if (hex < 16)
+	{
+		if (hex >= 10)
+		{
+			if (type == 'x')
+				ft_putchr(hex + 87);
+			else
+				ft_putchr(hex + 55); 
+		}
+		else
+			ft_putchr(hex + 48);
+	}
+	else
+	{
+		ft_puthex(hex / 16, type);
+		ft_puthex(hex % 16, type);
+	}
+} 
+
 void	ft_putstr(char *s)
 {
 	int	i;
@@ -36,6 +57,15 @@ void	ft_putstr(char *s)
 	if (s)
 		while (s[++i] != 0)
 			write(1, &s[i], 1);
+}
+
+void	ft_putaddr(void *ptr)
+{
+	uintptr_t	ptraddr;
+
+	ptraddr = (uintptr_t)ptr;
+	ft_putstr("0x");
+	ft_puthex(ptraddr, 'x');
 }
 
 void	ft_putchr(char c)
