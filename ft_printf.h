@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:35:35 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/22 01:33:40 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/22 01:51:31 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
+#ifndef FT_PRINTF_H
 # include <unistd.h>
 # include <stdarg.h>
-# define PRINTF_H
+# define FT_PRINTF_H
 
 typedef	struct	s_type
 {

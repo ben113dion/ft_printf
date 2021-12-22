@@ -6,11 +6,11 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:34:58 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/22 01:35:04 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/22 02:01:24 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 s_type	ft_note(void)
 {
@@ -61,7 +61,6 @@ int	ft_printf(const char *input, ...)
 	va_end(note.argz);
 	return (0);
 }
-
 /*
 #include <stdio.h>
 int	main(void)
