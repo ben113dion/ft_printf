@@ -6,7 +6,7 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 01:26:03 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 14:53:30 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 15:27:12 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ size_t	ft_puthex(unsigned long long hex, size_t type)
 			if (type == 'x')
 				nchr += ft_putchr(hex + 87);
 			else
-				nchr += ft_putchr(hex + 55); 
+				nchr += ft_putchr(hex + 55);
 		}
 		else
 			nchr += ft_putchr(hex + 48);
@@ -61,7 +61,7 @@ size_t	ft_puthex(unsigned long long hex, size_t type)
 		nchr += ft_puthex(hex % 16, type);
 	}
 	return (nchr);
-} 
+}
 
 size_t	ft_putstr(char *s)
 {
@@ -90,5 +90,5 @@ size_t	ft_putaddr(void *ptr)
 
 size_t	ft_putchr(size_t c)
 {
-	return(write(1, &c, 1));
+	return (write(1, &c, 1));
 }

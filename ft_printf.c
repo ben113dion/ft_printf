@@ -6,16 +6,16 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:34:58 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 15:09:39 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 15:31:47 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-s_type	ft_note(void)
+t_note	ft_note(void)
 {
 	s_type	i;
-	
+
 	i.index = 0;
 	i.nchr = 0;
 	return (i);
@@ -51,7 +51,7 @@ int	ft_printf(const char *input, ...)
 	while (input[note.index])
 	{
 		if (input[note.index] != '%')
-			note.nchr += write(1, &input[note.index], 1); 
+			note.nchr += ft_putchr(input[note.index]);
 		else if (input[note.index] == '%')
 		{
 			note.index++;

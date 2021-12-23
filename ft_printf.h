@@ -6,7 +6,7 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:35:35 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 14:53:53 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 15:30:58 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 # include <stdarg.h>
 # define FT_PRINTF_H
 
-typedef	struct	s_type
+typedef struct t_note
 {
 	size_t	index;
 	size_t	nchr;
 	va_list	argz;
-}	s_type;
+}	t_note;
 
-int	ft_printf(const char *input, ...);
+int		ft_printf(const char *input, ...);
 size_t	ft_puthex(unsigned long long hex, size_t type);
 size_t	ft_putaddr(void *ptr);
 size_t	ft_putnbr(long n);
