@@ -6,81 +6,92 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 01:26:03 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/22 01:51:44 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 14:02:35 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	ft_putnbr(int n)
+//change write fr putstr or putchr
+size_t	ft_putnbr(int n)
 {
 	size_t	pchr;
+	size_t	nchr;
 
+	nchr = 0;
 	if (n == -2147483648)
-		write(1, "-2147483648", 11);
+		nchr += write(1, "-2147483648", 11);
 	else
 	{
 		if (n < 0)
 		{
-			write(1, "-", 1);
+			nchr += write(1, "-", 1);
 			n = -n;
-			ft_putnbr(n);
+			nchr += ft_putnbr(n);
 		}
 		else if (n < 10)
 		{
 			pchr = n + 48;
-			write(1, &pchr, 1);
+			nchr += write(1, &pchr, 1);
 		}
 		else
 		{
-			ft_putnbr(n / 10);
+			nchr += ft_putnbr(n / 10);
 			pchr = (n % 10) + 48;
-			write(1, &pchr, 1);
+			nchr += write(1, &pchr, 1);
 		}
 	}
+	return (nchr);
 }
 
-void	ft_puthex(unsigned long long hex, size_t type)
+size_t	ft_puthex(unsigned long long hex, size_t type)
 {
+	size_t	nchr;
+
+	nchr = 0;
 	if (hex < 16)
 	{
 		if (hex >= 10)
 		{
 			if (type == 'x')
-				ft_putchr(hex + 87);
+				nchr += ft_putchr(hex + 87);
 			else
-				ft_putchr(hex + 55); 
+				nchr += ft_putchr(hex + 55); 
 		}
 		else
-			ft_putchr(hex + 48);
+			nchr += ft_putchr(hex + 48);
 	}
 	else
 	{
-		ft_puthex(hex / 16, type);
-		ft_puthex(hex % 16, type);
+		nchr += ft_puthex(hex / 16, type);
+		nchr += ft_puthex(hex % 16, type);
 	}
+	return (nchr);
 } 
 
-void	ft_putstr(char *s)
+size_t	ft_putstr(char *s)
 {
-	size_t	i;
+	size_t	nchr;
 
-	i = -1;
+	nchr = -1;
 	if (s)
-		while (s[++i] != 0)
-			write(1, &s[i], 1);
+		while (s[++nchr] != 0)
+			write(1, &s[nchr], 1);
+	return (nchr);
 }
 
-void	ft_putaddr(void *ptr)
+size_t	ft_putaddr(void *ptr)
 {
 	uintptr_t	ptraddr;
+	size_t		nchr;
 
+	nchr = 0;
 	ptraddr = (uintptr_t)ptr;
-	ft_putstr("0x");
-	ft_puthex(ptraddr, 'x');
+	nchr += ft_putstr("0x");
+	nchr += ft_puthex(ptraddr, 'x');
+	return (nchr);
 }
 
-void	ft_putchr(size_t c)
+size_t	ft_putchr(size_t c)
 {
-	write(1, &c, 1);
+	return(write(1, &c, 1));
 }

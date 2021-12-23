@@ -6,7 +6,7 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:34:58 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/22 02:01:24 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 13:58:26 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ s_type	ft_note(void)
 	s_type	i;
 	
 	i.index = 0;
+	i.nchr = 0;
 	return (i);
 }
 
@@ -26,19 +27,19 @@ void	is_what(const char *input, s_type *note)
 
 	s = (char)input[note->index];
 	if (s == 'd' || s == 'i')
-		ft_putnbr(va_arg(note->argz, size_t));
+		note->nchr += ft_putnbr(va_arg(note->argz, size_t));
 	else if (s == 'u')
-		ft_putnbr(va_arg(note->argz, unsigned int));
+		note->nchr += ft_putnbr(va_arg(note->argz, unsigned int));
 	else if (s == 's')
-		ft_putstr(va_arg(note->argz, char *));
+		note->nchr += ft_putstr(va_arg(note->argz, char *));
 	else if (s == 'c')
-		ft_putchr(va_arg(note->argz, size_t));
+		note->nchr += ft_putchr(va_arg(note->argz, size_t));
 	else if (s == 'x' || s == 'X')
-		ft_puthex(va_arg(note->argz, size_t), s);
+		note->nchr += ft_puthex(va_arg(note->argz, size_t), s);
 	else if (s == 'p')
-		ft_putaddr(va_arg(note->argz, void *));
+		note->nchr += ft_putaddr(va_arg(note->argz, void *));
 	else if (s == '%')
-		ft_putchr('%');
+		note->nchr += ft_putchr('%');
 }
 
 int	ft_printf(const char *input, ...)
@@ -50,7 +51,7 @@ int	ft_printf(const char *input, ...)
 	while (input[note.index])
 	{
 		if (input[note.index] != '%')
-			write(1, &input[note.index], 1); 
+			note.nchr += write(1, &input[note.index], 1); 
 		else if (input[note.index] == '%')
 		{
 			note.index++;
@@ -59,31 +60,44 @@ int	ft_printf(const char *input, ...)
 		note.index++;
 	}
 	va_end(note.argz);
-	return (0);
+	return (note.nchr);
 }
-/*
+
 #include <stdio.h>
 int	main(void)
 {
 	void		*ptr;
+	int	s;
 
 	puts("-----------------");		
-	ft_printf("d|%d|\n", 42);
-	printf("d|%d|\n", 42);
+	s = ft_printf("d|%d|\n", 42);
+	ft_printf("nchr:%d\n", s);
+	s = printf("d|%d|\n", 42);
+ 	ft_printf("nchr:%d\n", s);
 	puts("-----------------");		
-	ft_printf("u|%u|\n", 42);
-	printf("u|%u|\n", 42);
+	s = ft_printf("u|%u|\n", 42);
+	ft_printf("nchr:%d\n", s);
+	s = printf("u|%u|\n", 42);
+	ft_printf("nchr:%d\n", s);
 	puts("-----------------");		
-	ft_printf("s|%s|\n", "MyLap");
-	printf("s|%s|\n", "MyLap");
+	s = ft_printf("s|%s|\n", "MyLap");
+	ft_printf("nchr:%d\n", s);
+	s = printf("s|%s|\n", "MyLap");
+	ft_printf("nchr:%d\n", s);
 	puts("-----------------");		
-	ft_printf("c|%c|%%\n", '$');
-	printf("c|%c|%%\n", '$');
+	s = ft_printf("c|%c|%%\n", '$');
+	ft_printf("nchr:%d\n", s);
+	s = printf("c|%c|%%\n", '$');
+	ft_printf("nchr:%d\n", s);
 	puts("-----------------");		
-	ft_printf("x|%x|%X|\n", 0x8F4F4F, 0xabcde113);
-	printf("x|%x|%X|\n", 0x8F4F4F, 0xabcde113);
+	s = ft_printf("x|%x|%X|\n", 0x8F4F4F, 0xabcde113);
+	ft_printf("nchr:%d\n", s);
+	s = printf("x|%x|%X|\n", 0x8F4F4F, 0xabcde113);
+	ft_printf("nchr:%d\n", s);
 	puts("-----------------");
-	ft_printf("p|%p|\n", &ptr);
-	printf("p|%p|\n", &ptr);
+	s = ft_printf("p|%p|\n", &ptr);
+	ft_printf("nchr:%d\n", s);
+	s = printf("p|%p|\n", &ptr);
+	ft_printf("nchr:%d\n", s);
 	return (0);
-}*/
+}

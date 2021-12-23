@@ -6,7 +6,7 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:35:35 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/22 01:51:31 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 13:55:56 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@
 typedef	struct	s_type
 {
 	size_t	index;
+	size_t	nchr;
 	va_list	argz;
 }	s_type;
 
 int	ft_printf(const char *format, ...);
-void	ft_puthex(unsigned long long hex, size_t type);
-void	ft_putaddr(void *ptr);
-void	ft_putnbr(int n);
-void	ft_putstr(char *s);
-void	ft_putchr(size_t c);
+size_t	ft_puthex(unsigned long long hex, size_t type);
+size_t	ft_putaddr(void *ptr);
+size_t	ft_putnbr(int n);
+size_t	ft_putstr(char *s);
+size_t	ft_putchr(size_t c);
 
 #endif 
