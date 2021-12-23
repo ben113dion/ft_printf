@@ -6,7 +6,7 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:35:35 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 13:55:56 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 14:09:18 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef	struct	s_type
 	va_list	argz;
 }	s_type;
 
-int	ft_printf(const char *format, ...);
+int	ft_printf(const char *input, ...);
 size_t	ft_puthex(unsigned long long hex, size_t type);
 size_t	ft_putaddr(void *ptr);
 size_t	ft_putnbr(int n);

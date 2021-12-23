@@ -6,7 +6,7 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:34:58 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 13:58:26 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 14:11:02 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,43 +61,4 @@ int	ft_printf(const char *input, ...)
 	}
 	va_end(note.argz);
 	return (note.nchr);
-}
-
-#include <stdio.h>
-int	main(void)
-{
-	void		*ptr;
-	int	s;
-
-	puts("-----------------");		
-	s = ft_printf("d|%d|\n", 42);
-	ft_printf("nchr:%d\n", s);
-	s = printf("d|%d|\n", 42);
- 	ft_printf("nchr:%d\n", s);
-	puts("-----------------");		
-	s = ft_printf("u|%u|\n", 42);
-	ft_printf("nchr:%d\n", s);
-	s = printf("u|%u|\n", 42);
-	ft_printf("nchr:%d\n", s);
-	puts("-----------------");		
-	s = ft_printf("s|%s|\n", "MyLap");
-	ft_printf("nchr:%d\n", s);
-	s = printf("s|%s|\n", "MyLap");
-	ft_printf("nchr:%d\n", s);
-	puts("-----------------");		
-	s = ft_printf("c|%c|%%\n", '$');
-	ft_printf("nchr:%d\n", s);
-	s = printf("c|%c|%%\n", '$');
-	ft_printf("nchr:%d\n", s);
-	puts("-----------------");		
-	s = ft_printf("x|%x|%X|\n", 0x8F4F4F, 0xabcde113);
-	ft_printf("nchr:%d\n", s);
-	s = printf("x|%x|%X|\n", 0x8F4F4F, 0xabcde113);
-	ft_printf("nchr:%d\n", s);
-	puts("-----------------");
-	s = ft_printf("p|%p|\n", &ptr);
-	ft_printf("nchr:%d\n", s);
-	s = printf("p|%p|\n", &ptr);
-	ft_printf("nchr:%d\n", s);
-	return (0);
 }

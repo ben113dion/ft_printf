@@ -6,38 +6,33 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 01:26:03 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 14:02:35 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 14:10:11 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-//change write fr putstr or putchr
+
 size_t	ft_putnbr(int n)
 {
-	size_t	pchr;
 	size_t	nchr;
 
 	nchr = 0;
 	if (n == -2147483648)
-		nchr += write(1, "-2147483648", 11);
+		nchr += ft_putstr("-2147483648");
 	else
 	{
 		if (n < 0)
 		{
-			nchr += write(1, "-", 1);
+			nchr += ft_putchr('-');
 			n = -n;
 			nchr += ft_putnbr(n);
 		}
 		else if (n < 10)
-		{
-			pchr = n + 48;
-			nchr += write(1, &pchr, 1);
-		}
+			nchr += ft_putchr(n + 48);
 		else
 		{
 			nchr += ft_putnbr(n / 10);
-			pchr = (n % 10) + 48;
-			nchr += write(1, &pchr, 1);
+			nchr += ft_putchr((n % 10) + 48);
 		}
 	}
 	return (nchr);
