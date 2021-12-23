@@ -6,13 +6,13 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 01:26:03 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 14:10:11 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 14:53:30 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_putnbr(int n)
+size_t	ft_putnbr(long n)
 {
 	size_t	nchr;
 
@@ -67,6 +67,8 @@ size_t	ft_putstr(char *s)
 {
 	size_t	nchr;
 
+	if (!s)
+		return (ft_putstr("(null)"));
 	nchr = -1;
 	if (s)
 		while (s[++nchr] != 0)

@@ -6,7 +6,7 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:34:58 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 14:11:02 by bdion            ###   ########.fr       */
+/*   Updated: 2021/12/23 15:09:39 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	is_what(const char *input, s_type *note)
 
 	s = (char)input[note->index];
 	if (s == 'd' || s == 'i')
-		note->nchr += ft_putnbr(va_arg(note->argz, size_t));
+		note->nchr += ft_putnbr(va_arg(note->argz, int));
 	else if (s == 'u')
 		note->nchr += ft_putnbr(va_arg(note->argz, unsigned int));
 	else if (s == 's')
@@ -35,7 +35,7 @@ void	is_what(const char *input, s_type *note)
 	else if (s == 'c')
 		note->nchr += ft_putchr(va_arg(note->argz, size_t));
 	else if (s == 'x' || s == 'X')
-		note->nchr += ft_puthex(va_arg(note->argz, size_t), s);
+		note->nchr += ft_puthex(va_arg(note->argz, unsigned int), s);
 	else if (s == 'p')
 		note->nchr += ft_putaddr(va_arg(note->argz, void *));
 	else if (s == '%')
