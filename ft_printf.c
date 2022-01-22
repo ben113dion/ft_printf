@@ -12,53 +12,45 @@
 
 #include "ft_printf.h"
 
-t_note	ft_note(void)
-{
-	s_type	i;
-
-	i.index = 0;
-	i.nchr = 0;
-	return (i);
-}
-
-void	is_what(const char *input, s_type *note)
+void	is_what(const char *input, s_note *notepad)
 {
 	char	s;
 
-	s = (char)input[note->index];
+	s = (char)input[notepad->index];
 	if (s == 'd' || s == 'i')
-		note->nchr += ft_putnbr(va_arg(note->argz, int));
+		notepad->nchr += ft_putnbr(va_arg(notepad->argz, int));
 	else if (s == 'u')
-		note->nchr += ft_putnbr(va_arg(note->argz, unsigned int));
+		notepad->nchr += ft_putnbr(va_arg(notepad->argz, unsigned long));
 	else if (s == 's')
-		note->nchr += ft_putstr(va_arg(note->argz, char *));
+		notepad->nchr += ft_putstr(va_arg(notepad->argz, char *));
 	else if (s == 'c')
-		note->nchr += ft_putchr(va_arg(note->argz, size_t));
+		notepad->nchr += ft_putchr(va_arg(notepad->argz, size_t));
 	else if (s == 'x' || s == 'X')
-		note->nchr += ft_puthex(va_arg(note->argz, unsigned int), s);
+		notepad->nchr += ft_puthex(va_arg(notepad->argz, unsigned int), s);
 	else if (s == 'p')
-		note->nchr += ft_putaddr(va_arg(note->argz, void *));
+		notepad->nchr += ft_putaddr(va_arg(notepad->argz, void *));
 	else if (s == '%')
-		note->nchr += ft_putchr('%');
+		notepad->nchr += ft_putchr('%');
 }
 
 int	ft_printf(const char *input, ...)
 {
-	s_type	note;
+	s_note	notepad;
 
-	note = ft_note();
-	va_start(note.argz, (char *)input);
-	while (input[note.index])
+	notepad.index = 0;
+	notepad.nchr = 0;
+	va_start(notepad.argz, (char *)input);
+	while (input[notepad.index])
 	{
-		if (input[note.index] != '%')
-			note.nchr += ft_putchr(input[note.index]);
-		else if (input[note.index] == '%')
+		if (input[notepad.index] != '%')
+			notepad.nchr += ft_putchr(input[notepad.index]);
+		else if (input[notepad.index] == '%')
 		{
-			note.index++;
-			is_what(input, &note);
+			notepad.index++;
+			is_what(input, &notepad);
 		}
-		note.index++;
+		notepad.index++;
 	}
-	va_end(note.argz);
-	return (note.nchr);
+	va_end(notepad.argz);
+	return (notepad.nchr);
 }
