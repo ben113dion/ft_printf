@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	is_what(const char *input, s_note *notepad)
+void	is_what(const char *input, t_note *notepad)
 {
 	char	s;
 
@@ -35,7 +35,7 @@ void	is_what(const char *input, s_note *notepad)
 
 int	ft_printf(const char *input, ...)
 {
-	s_note	notepad;
+	t_note	notepad;
 
 	notepad.index = 0;
 	notepad.nchr = 0;

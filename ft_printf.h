@@ -15,12 +15,12 @@
 # include <stdarg.h>
 # define FT_PRINTF_H
 
-typedef struct s_note
+typedef struct t_note
 {
 	size_t	index;
 	size_t	nchr;
 	va_list	argz;
-}	s_note;
+}	t_note;
 
 int		ft_printf(const char *input, ...);
 size_t	ft_puthex(unsigned long long hex, size_t type);
