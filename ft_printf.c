@@ -6,7 +6,7 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:34:58 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 15:31:47 by bdion            ###   ########.fr       */
+/*   Updated: 2022/01/24 13:56:17 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	is_what(const char *input, t_note *notepad)
 	if (s == 'd' || s == 'i')
 		notepad->nchr += ft_putnbr(va_arg(notepad->argz, int));
 	else if (s == 'u')
-		notepad->nchr += ft_putnbr(va_arg(notepad->argz, unsigned long));
+		notepad->nchr += ft_putunsnbr(va_arg(notepad->argz, unsigned long));
 	else if (s == 's')
 		notepad->nchr += ft_putstr(va_arg(notepad->argz, char *));
 	else if (s == 'c')
@@ -53,4 +53,9 @@ int	ft_printf(const char *input, ...)
 	}
 	va_end(notepad.argz);
 	return (notepad.nchr);
+}
+
+size_t	ft_putchr(size_t c)
+{
+	return (write(1, &c, 1));
 }

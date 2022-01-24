@@ -6,11 +6,32 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 01:26:03 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 15:27:12 by bdion            ###   ########.fr       */
+/*   Updated: 2022/01/24 13:50:25 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+size_t	ft_putunsnbr(unsigned int n)
+{
+	size_t	nchr;
+
+	nchr = 0;
+	if (n < 0)
+	{
+		nchr += ft_putchr('-');
+		n = -n;
+		nchr += ft_putnbr(n);
+	}
+	else if (n < 10)
+		nchr += ft_putchr(n + 48);
+	else
+	{
+		nchr += ft_putnbr(n / 10);
+		nchr += ft_putchr((n % 10) + 48);
+	}
+	return (nchr);
+}
 
 size_t	ft_putnbr(long n)
 {
@@ -86,9 +107,4 @@ size_t	ft_putaddr(void *ptr)
 	nchr += ft_putstr("0x");
 	nchr += ft_puthex(ptraddr, 'x');
 	return (nchr);
-}
-
-size_t	ft_putchr(size_t c)
-{
-	return (write(1, &c, 1));
 }

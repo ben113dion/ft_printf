@@ -6,7 +6,7 @@
 /*   By: bdion <bdion@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 20:35:35 by bdion             #+#    #+#             */
-/*   Updated: 2021/12/23 15:30:58 by bdion            ###   ########.fr       */
+/*   Updated: 2022/01/24 13:55:54 by bdion            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ size_t	ft_putaddr(void *ptr);
 size_t	ft_putnbr(long n);
 size_t	ft_putstr(char *s);
 size_t	ft_putchr(size_t c);
+size_t	ft_putunsnbr(unsigned int n);
 
 #endif 
